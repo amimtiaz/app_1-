@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ProfileActivity"
+    android:background="@color/whatsAppColor"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.1"
+        android:background="@drawable/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/circle_bg"
+        android:backgroundTint="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/updateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/person" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/editPicBn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/circle_bg"
+                android:backgroundTint="#30B0A4"
+                android:padding="8dp"
+                android:src="@drawable/baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="@+id/cardView"
+                app:layout_constraintStart_toStartOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <EditText
+            android:id="@+id/nameTxt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="text"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <EditText
+            android:id="@+id/phoneTxt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Phone"
+            android:inputType="text"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/nameTxt"
+            app:layout_constraintStart_toStartOf="@+id/nameTxt"
+            app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
+
+
+        <EditText
+            android:id="@+id/mailTxt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:allowUndo="true"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:hint="Mail"
+            android:inputType="text"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/phoneTxt"
+            app:layout_constraintStart_toStartOf="@+id/phoneTxt"
+            app:layout_constraintTop_toBottomOf="@+id/phoneTxt" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="@+id/mailTxt"
+            app:layout_constraintStart_toStartOf="@+id/mailTxt"
+            app:layout_constraintTop_toBottomOf="@+id/mailTxt">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:drawableStart="@drawable/baseline_save_24"
+                android:drawablePadding="0dp"
+                android:padding="8dp"
+                android:text="SAVE Data"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/editTextText"
+                app:layout_constraintStart_toStartOf="@+id/editTextText"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/showLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backBtn">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/pic2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/person" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:singleLine="false"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:text="Name"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:text="Phone"
+            android:padding="8dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvName"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+
+        <TextView
+            android:id="@+id/tvMail"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:allowUndo="true"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:ems="10"
+            android:text="Mail"
+            android:padding="8dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvPhone"
+            app:layout_constraintStart_toStartOf="@+id/tvPhone"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="@+id/tvMail"
+            app:layout_constraintStart_toStartOf="@+id/tvMail"
+            app:layout_constraintTop_toBottomOf="@+id/tvMail">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/updateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="#C6FF0057"
+                android:drawableStart="@drawable/baseline_update_24"
+                android:drawablePadding="0dp"
+                android:padding="8dp"
+                android:text="Update Data"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+                app:layout_constraintStart_toStartOf="@+id/saveBtn"
+                app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

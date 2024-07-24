@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whatsAppColor"
+    tools:context=".Activity.ExpenseTruckerActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout22"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.1"
+        android:background="@drawable/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/circle_bg"
+            android:backgroundTint="#000000"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back" />
+
+
+        <ImageView
+            android:id="@+id/notificationBtn"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/circle_bg"
+            android:backgroundTint="#000000"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/backBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/backBtn"
+            app:srcCompat="@drawable/baseline_notifications_none_24" />
+
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            app:cardCornerRadius="1000dp"
+            app:layout_constraintEnd_toEndOf="@+id/notificationBtn"
+            app:layout_constraintStart_toStartOf="@+id/backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#30B1A5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/finalBalanceTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BDT 0.00"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/up_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#30B0A4" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="right"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Income"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/totalIncomeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BDT 0.0"
+                    android:textColor="#30B0A4"
+
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/addIncomeTxt"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:drawablePadding="0dp"
+                        android:padding="8dp"
+                        android:text="Add Income"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+                        app:layout_constraintStart_toStartOf="@+id/editTextText"
+                        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/showIncomeBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:backgroundTint="#C6FF0057"
+                        android:padding="4dp"
+                        android:text="Show Income"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+                        app:layout_constraintStart_toStartOf="@+id/saveBtn"
+                        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/btn_bg"
+            android:backgroundTint="@color/white"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:src="@drawable/down_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#FC377A" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="right"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Expenses"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/totalExpenseTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BDT 0.0"
+                    android:textColor="#E91E63"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/addExpenseBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:drawablePadding="0dp"
+                        android:padding="4dp"
+                        android:text="Add Expense"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+                        app:layout_constraintStart_toStartOf="@+id/editTextText"
+                        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/showExpenseBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg"
+                        android:backgroundTint="#C6FF0057"
+                        android:drawablePadding="0dp"
+                        android:padding="2dp"
+                        android:text="Show Expenses"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+                        app:layout_constraintStart_toStartOf="@+id/saveBtn"
+                        app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:weightSum="2"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/displayIncomeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2_bg"
+                android:drawablePadding="0dp"
+                android:padding="4dp"
+                android:text="Income"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/editTextText"
+                app:layout_constraintStart_toStartOf="@+id/editTextText"
+                app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/white"
+                android:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/displayExpenseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2_bg"
+                android:backgroundTint="#C6FF0057"
+                android:drawablePadding="0dp"
+                android:padding="2dp"
+                android:text="Expenses"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/saveBtn"
+                app:layout_constraintStart_toStartOf="@+id/saveBtn"
+                app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/white"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="70dp"
+            android:scrollbars="none"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
