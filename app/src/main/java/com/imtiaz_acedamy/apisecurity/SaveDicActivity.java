@@ -42,7 +42,6 @@ public class SaveDicActivity extends BaseActivity {
         Cursor cursor = db.getAllWordData();
 
 
-
         if (cursor != null && cursor.getCount() > 0) {
 
             while (cursor.moveToNext()) {
