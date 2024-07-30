@@ -1,4 +1,4 @@
-package com.imtiaz_acedamy.apisecurity;
+package com.imtiaz_acedamy.apisecurity.Domain;
 
 public class Domain {
     String id;

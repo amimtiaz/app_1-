@@ -48,20 +48,30 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow_back" />
 
-
-        <ImageView
-            android:id="@+id/notificationBtn"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/picLay"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:layout_marginEnd="24dp"
-            android:background="@drawable/circle_bg"
-            android:backgroundTint="#000000"
-            android:padding="8dp"
+            app:cardCornerRadius="100dp"
             app:layout_constraintBottom_toBottomOf="@+id/backBtn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/backBtn"
-            app:srcCompat="@drawable/baseline_notifications_none_24" />
+            app:layout_constraintTop_toTopOf="@+id/backBtn">
 
+            <ImageView
+                android:id="@+id/picUser"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@drawable/circle_bg"
+                android:backgroundTint="#000000"
+                android:scaleType="centerCrop"
+                android:tooltipText=""
+                app:layout_constraintBottom_toBottomOf="@+id/backBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/backBtn" />
+
+
+        </androidx.cardview.widget.CardView>
 
 
         <androidx.cardview.widget.CardView
@@ -69,7 +79,7 @@
             android:layout_width="220dp"
             android:layout_height="220dp"
             app:cardCornerRadius="1000dp"
-            app:layout_constraintEnd_toEndOf="@+id/notificationBtn"
+            app:layout_constraintEnd_toEndOf="@+id/picLay"
             app:layout_constraintStart_toStartOf="@+id/backBtn"
             app:layout_constraintTop_toBottomOf="@+id/backBtn">
 

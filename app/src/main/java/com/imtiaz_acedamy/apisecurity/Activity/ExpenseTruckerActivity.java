@@ -1,8 +1,13 @@
 package com.imtiaz_acedamy.apisecurity.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +33,8 @@ public class ExpenseTruckerActivity extends BaseActivity {
     HashMap<String, String> hashMap;
     public static  boolean  EXPENSE = false;
     public static boolean TRACKER = true;
+    SharedPreferences sharedPreferences, sharedPreferences2;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +42,32 @@ public class ExpenseTruckerActivity extends BaseActivity {
         binding = ActivityExpenseTruckerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         dbHelper = new DatabaseHelper(this);
-
+        sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        sharedPreferences2 = getSharedPreferences(getString(R.string.PROFILE_DATA), MODE_PRIVATE);
 
         setVariable();
         upToDateUI();
         loadData();
+        sharedPreferVaribale();
+    }
+
+    private void sharedPreferVaribale() {
+
+        String getImageString = sharedPreferences2.getString("image", null);
+        String getNameStr = sharedPreferences2.getString("name", null);
+
+        String base64String = "data:image/png;base64,"+ getImageString;
+        String base64Image = base64String.split(",")[1];
+
+        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+
+        binding.picUser.setImageBitmap(decodedByte);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.picUser.setTooltipText(getNameStr);
+
+        }
     }
 
     // load data

@@ -1,27 +1,13 @@
 package com.imtiaz_acedamy.apisecurity.Adapter;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewbinding.ViewBinding;
-
-import com.imtiaz_acedamy.apisecurity.Activity.MainActivity;
-import com.imtiaz_acedamy.apisecurity.Database.DB;
-import com.imtiaz_acedamy.apisecurity.Domain;
-import com.imtiaz_acedamy.apisecurity.R;
-import com.imtiaz_acedamy.apisecurity.databinding.ActivityMainBinding;
+import com.imtiaz_acedamy.apisecurity.Domain.Domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class EncryptAdapter extends BaseAdapter {
 

@@ -3,11 +3,14 @@ package com.imtiaz_acedamy.apisecurity.Activity;
 
 
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Base64;
@@ -22,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.android.volley.AuthFailureError;
@@ -49,7 +53,7 @@ import java.util.Map;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     ArrayList<HashMap<String, String>> arrayList;
@@ -57,7 +61,6 @@ public class MainActivity extends BaseActivity {
     DB dbHelper;
     DatabaseHelper dbHelper2;
     SharedPreferences sharedPreferences;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class MainActivity extends BaseActivity {
         // Database
         dbHelper = new DB(this);
         dbHelper2 = new DatabaseHelper(this);
-        sharedPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(getString(R.string.PROFILE_DATA), MODE_PRIVATE);
 
         // set variable
         setVariable();
@@ -76,6 +79,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    //==========
     private void bottomBarInit() {
         binding.profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,25 +92,63 @@ public class MainActivity extends BaseActivity {
         binding.truckerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProfileActivity.SHARED_PREF = false;
                 startActivity(new Intent(MainActivity.this, ExpenseTruckerActivity.class));
             }
         });
-    }
 
+        binding.dictionaryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(MainActivity.this, DictionaryActivity.class));
+            }
+        });
+    }
+    //==========
     private void setVariable() {
 
-        String getName = sharedPreferences.getString("name", "default value");
-        String getImageString = sharedPreferences.getString("image", "default value");
+        binding.copyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        binding.nameTxt.setText(getName);
+                if (binding.displayTxt.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Nothing to copy", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    String text =  binding.displayTxt.getText().toString();
+                    ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                    ClipData clipData = ClipData.newPlainText("lebel" , text);
+                    clipboardManager.setPrimaryClip(clipData);
+                    Toast.makeText(MainActivity.this, "Copied!", Toast.LENGTH_SHORT).show();
 
-        // convert base64String to image
-        String base64String = "data:image/png;base64,"+ getImageString;
-        String base64Image = base64String.split(",")[1];
+                    return;
+                }
 
-        byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        binding.pic2.setImageBitmap(decodedByte);
+
+            }
+        });
+
+        if (sharedPreferences != null ){
+            String getName = sharedPreferences.getString("name", null);
+            String getImageString = sharedPreferences.getString("image", null);
+
+            binding.nameTxt.setText(getName);
+
+            // convert base64String to image
+            String base64String = "data:image/png;base64,"+ getImageString;
+            String base64Image = base64String.split(",")[1];
+
+            byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            binding.pic2.setImageBitmap(decodedByte);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                binding.pic2.setTooltipText(getName);
+            }
+
+        }
+
 
 
         binding.progressBar.setVisibility(View.GONE);
@@ -188,13 +230,6 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadData();
-    }
-
     // load data
     public void loadData(){
         Cursor cursor = null;
@@ -237,6 +272,9 @@ public class MainActivity extends BaseActivity {
             }
 
         }
+
+
+
     }
 
     // Adapter Here
@@ -292,15 +330,19 @@ public class MainActivity extends BaseActivity {
             }
 
 
-                deleteBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            copyBtn.setOnClickListener(v -> {
+                String text =  encryptedTxt.getText().toString();
+                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("lebel" , text);
+                clipboardManager.setPrimaryClip(clipData);
+                Toast.makeText(MainActivity.this, "Copied!", Toast.LENGTH_SHORT).show();
+            });
 
-                    dbHelper.deleteEncryptedData(id);
-                    loadData();
-                    Toast.makeText(MainActivity.this, "successfully Deleted", Toast.LENGTH_SHORT).show();
+            deleteBtn.setOnClickListener(v -> {
+                dbHelper.deleteEncryptedData(id);
+                loadData();
+                Toast.makeText(MainActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
 
-                }
             });
 
 
@@ -309,8 +351,7 @@ public class MainActivity extends BaseActivity {
             return view;
         }
     }
-    //===============================================
-
+    //==========
     private void decrypt() throws Exception{
 
         if (binding.editTextText.getText().length() >= 0){
@@ -328,7 +369,7 @@ public class MainActivity extends BaseActivity {
             String decryptedTxt = new String(decryptedBytes, "UTF-8");
             binding.displayTxt.setText(decryptedTxt);
 
-            Toast.makeText(this, "Result Shown", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Result Shown", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Null", Toast.LENGTH_SHORT).show();
         }
@@ -337,7 +378,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    //=======================================================
+    //==========
     private void encrypt() throws Exception{
 
         String plainTxt = binding.editTextText.getText().toString();
@@ -353,13 +394,10 @@ public class MainActivity extends BaseActivity {
         String encodedString = Base64.encodeToString(secureByte, Base64.DEFAULT);
         binding.displayTxt.setText(encodedString.toString()+"");
 
-        Toast.makeText(this, "Result Shown", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Result Shown", Toast.LENGTH_SHORT).show();
     }
 
-    //===================================================
-
-    //====================================================
-
+    //===========
     private void arrayRequest() {
 
         String url = "https://devimtiaz.000webhostapp.com/apps/API%20&%20SECURITY/view.php";
@@ -394,9 +432,7 @@ public class MainActivity extends BaseActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(MainActivity.this);
         requestQueue.add(arrayRequest);
     }
-
-
-
+    //===========
     private void objectRequest() {
         String url = "https://devimtiaz.000webhostapp.com/apps/API%20&%20SECURITY/view.php";
 
@@ -521,8 +557,7 @@ public class MainActivity extends BaseActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
-
-    //=====================================
+    //===========
     private void requestServer() {
 
         String url = "https://devimtiaz.000webhostapp.com/apps/API%20&%20SECURITY/view.php";
@@ -649,6 +684,12 @@ public class MainActivity extends BaseActivity {
     protected void onPostResume() {
         super.onPostResume();
         setVariable();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
     }
 }
 

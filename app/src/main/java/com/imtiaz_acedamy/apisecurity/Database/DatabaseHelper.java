@@ -2,6 +2,7 @@ package com.imtiaz_acedamy.apisecurity.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,15 +11,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DB_NAME = "moneybag";
     public static final int DB_VERSION = 1;
+    Context context;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
 
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-
 
         db.execSQL("create table if not exists expense (id INTEGER primary key autoincrement, amount DOUBLE, reason TEXT )");
         db.execSQL("create table if not exists income (id INTEGER primary key autoincrement, amount DOUBLE, reason TEXT  )");

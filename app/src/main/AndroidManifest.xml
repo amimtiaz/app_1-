@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -19,8 +20,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.APISECURITY"
+        android:theme="@style/Base.Theme.APISECURITY"
         tools:targetApi="31">
+        <activity
+            android:name=".SaveDicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DictionaryActivity"
+            android:exported="false"
+            android:theme="@style/Base.Theme.APISECURITY" />
         <activity
             android:name=".Activity.AddActivity"
             android:exported="false" />
